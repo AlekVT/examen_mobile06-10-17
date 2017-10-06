@@ -25,7 +25,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Android expects _id to be the primary key
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_COORDS + "(_id INTEGER PRIMARY KEY, latitude.REAL, longitude.REAL, description.TEXT)";
+        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_COORDS + "(_id INTEGER PRIMARY KEY, latitude REAL, longitude REAL, description TEXT)";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
