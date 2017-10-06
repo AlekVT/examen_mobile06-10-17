@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Examen</string>
+    <string name="add_description">Voeg een beschrijving toe aan deze locatie</string>
+    <string name="ok_button">OK</string>
 </resources>

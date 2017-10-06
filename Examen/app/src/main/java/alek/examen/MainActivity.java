@@ -1,9 +1,12 @@
 package alek.examen;
 
 import android.content.Intent;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -15,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private MapView mapView;
     private static final double[] LAT_LONG = { 51.180848, 4.60841 };
+    private static final String GEOPOINT_LAT = "latitude";
+    private static final String GEOPOINT_LON = "longitude";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToNextScreen(GeoPoint loc) {
         Toast.makeText(this, loc.toDoubleString(), Toast.LENGTH_LONG).show();
-        //Intent nextScreenIntent = new Intent(this, );
-        /*if (pictureTaken) {
-            Intent nextScreenIntent = new Intent(this, EnterTextActivity.class);
-            nextScreenIntent.putExtra(IMAGE_URI_KEY, selectedPhotoPath);
-            nextScreenIntent.putExtra(BITMAP_WIDTH, takePictureImageView.getWidth());
-            nextScreenIntent.putExtra(BITMAP_HEIGHT, takePictureImageView.getHeight());
-
-            startActivity(nextScreenIntent);
-        } else {
-            Toaster.show(this, R.string.select_a_picture);
-        }*/
+        Intent nextScreenIntent = new Intent(this, AddDescriptionActivity.class);
+        nextScreenIntent.putExtra(GEOPOINT_LAT, loc.getLatitude());
+        nextScreenIntent.putExtra(GEOPOINT_LON, loc.getLongitude());
+        startActivity(nextScreenIntent);
     }
 }
