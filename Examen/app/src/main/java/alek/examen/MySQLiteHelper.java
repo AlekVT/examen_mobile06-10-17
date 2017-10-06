@@ -62,4 +62,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         }
         return descriptionList;
     }
+
+    public void clearTable() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("delete from " + TABLE_COORDS);
+    }
 }

@@ -55,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int actionType = ev.getAction();
         switch(actionType) {
+            case MotionEvent: {
+                try {
+                    helper.clearTable();
+                    finish();
+                    startActivity(getIntent());
+                } catch (Exception e) {
+                    Log.e("fuck", e.getMessage());
+                }
+            }
+            break;
             case MotionEvent.ACTION_UP: {
                 Projection proj = this.mapView.getProjection();
                 GeoPoint loc = (GeoPoint)proj.fromPixels((int)ev.getX(), (int)ev.getY());
@@ -62,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 //findZone(loc);
                 moveToNextScreen(loc);
             }
+            break;
         }
         return super.dispatchTouchEvent(ev);
     }
