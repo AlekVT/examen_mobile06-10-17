@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int actionType = ev.getAction();
         switch(actionType) {
-            case MotionEvent: {
+            case MotionEvent.ACTION_MOVE: {
                 try {
                     helper.clearTable();
                     finish();
@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     Log.e("fuck", e.getMessage());
                 }
+                return super.dispatchTouchEvent(ev);
             }
-            break;
             case MotionEvent.ACTION_UP: {
                 Projection proj = this.mapView.getProjection();
                 GeoPoint loc = (GeoPoint)proj.fromPixels((int)ev.getX(), (int)ev.getY());
